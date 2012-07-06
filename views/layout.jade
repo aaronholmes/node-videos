@@ -1,6 +1,17 @@
 !!!
 html
   head
-    title= title
-    link(rel='stylesheet', href='/stylesheets/style.css')
-  body!= body
+    title= "Hot Pie - " + title
+    link(rel='stylesheet', href='/stylesheets/#{stylesheet}.css')
+  body
+
+    #header
+      h1= title
+
+    - var flashTypes = ['info', 'error']
+    each flashType in flashTypes
+      if flash[flashType]
+        p.flash(class=flashType)
+          = flash[flashType]
+          
+    != body
